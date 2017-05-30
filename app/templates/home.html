@@ -1,1 +1,6 @@
 <h1>Home Page</h1>
+<ul>
+  <li ng-repeat="task in home.tasks">{{ task.$value }}</li>
+  <input type="text" ng-model="newTask" />
+  <button ng-click="createNewTask()">Add task</button>
+</ul>
