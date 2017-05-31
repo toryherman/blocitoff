@@ -1,0 +1,87 @@
+*, *::before, *::after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+	height: 100%;
+	font-size: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+header {
+  height: 60px;
+  background-color: #f6f6f6;
+}
+
+h1 {
+  font-family: 'Josefin Slab', serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #ccc;
+  line-height: 60px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+div#newTaskDiv {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+input {
+  height: 60px;
+  width: 90%;
+  border: none;
+  border-top: 1px solid #eee;
+  padding-left: 20px;
+}
+  input:focus {
+    outline: none;
+  }
+
+button#newTaskButton {
+  height: 60px;
+  color: #fff;
+  background-color: #862dce;
+  border: none;
+  width: 10%;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+  button#newTaskButton:hover {
+    background-color: #721db7;
+  }
+
+  button#newTaskButton:focus {
+    outline: none;
+  }
+
+li i.icon {
+  float: right;
+  color: #ccc;
+}
+
+  li i.icon:hover {
+    color: #ad2245;
+  }

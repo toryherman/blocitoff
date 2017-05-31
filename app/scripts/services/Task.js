@@ -13,6 +13,10 @@
       tasks.$add(item);
     };
 
+    Task.deleteTask = function(index) {
+      tasks.$remove(index);
+    }
+
     return Task;
   }
 
