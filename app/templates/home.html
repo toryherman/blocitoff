@@ -1,5 +1,10 @@
 <ul>
-  <li ng-repeat="task in home.tasks">{{ task.$value }} <i class="icon ion-close-round" ng-click="deleteTask(this)"></i></li>
+  <li ng-repeat="task in home.tasks | orderBy : 'index'">
+    <i class="icon ion-chevron-up" ng-click="moveUpTask(this)"></i>
+    <i class="icon ion-chevron-down" ng-click="moveDownTask(this)"></i>
+    <span>{{ task.content }}</span> {{ task.index }}
+    <i class="icon ion-close" ng-click="deleteTask(this)"></i>
+  </li>
 </ul>
 
 <div id="newTaskDiv">

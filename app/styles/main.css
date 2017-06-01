@@ -37,8 +37,9 @@ ul {
 li {
   height: 60px;
   line-height: 60px;
-  padding: 0 20px;
+  padding: 0 20px 0 52.5px;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
 
 div#newTaskDiv {
@@ -78,10 +79,31 @@ button#newTaskButton {
   }
 
 li i.icon {
-  float: right;
   color: #ccc;
 }
 
-  li i.icon:hover {
-    color: #ad2245;
+  li i.icon.ion-close {
+    float: right;
   }
+
+    li i.icon.ion-close:hover {
+      color: #ad2245;
+    }
+
+  li i.icon.ion-chevron-up, li i.icon.ion-chevron-down {
+    position: absolute;
+    left: 20px;
+    line-height: 30px;
+  }
+
+    li i.icon.ion-chevron-up {
+      top: 4px;
+    }
+
+    li i.icon.ion-chevron-down {
+      bottom: 4px;
+    }
+
+    li i.icon.ion-chevron-up:hover, li i.icon.ion-chevron-down:hover {
+      color: #4a89ef;
+    }
