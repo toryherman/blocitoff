@@ -1,8 +1,8 @@
 <ul>
-  <li ng-repeat="task in home.tasks | orderBy : 'index'">
+  <li ng-repeat="task in home.tasks | orderBy : 'rank'">
     <i class="icon ion-chevron-up" ng-click="moveUpTask(this)"></i>
     <i class="icon ion-chevron-down" ng-click="moveDownTask(this)"></i>
-    <span>{{ task.content }}</span> {{ task.index }}
+    {{ task.content }}
     <i class="icon ion-close" ng-click="deleteTask(this)"></i>
   </li>
 </ul>
