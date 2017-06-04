@@ -11,6 +11,11 @@
         url: '/',
         controller: 'HomeCtrl as home',
         templateUrl: '/templates/home.html'
+      })
+      .state('expired', {
+        url: '/expired',
+        controller: 'HomeCtrl as home',
+        templateUrl: '/templates/expired.html'
       });
   }
 

@@ -7,13 +7,26 @@
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:600|Open+Sans:400,600" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/home.css">
+  <link rel="stylesheet" href="/styles/icons.css">
 </head>
 <body>
   <header>
-    <h1>Blocitoff</h1>
+    <h1>
+      <a href="/">Blocitoff</a>
+      <span class="icon ion-navicon" onclick="$('.page-container').toggleClass('menu-open')"></span>
+    </h1>
   </header>
 
-  <ui-view></ui-view>
+  <div class="page-container">
+    <nav class="menu">
+      <ul>
+        <li><a href="/expired">Expired tasks</a></li>
+      </ul>
+    </nav>
+
+    <ui-view onclick="$('.page-container').removeClass('menu-open')"></ui-view>
+  </div>
 
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -38,6 +51,9 @@
 
   <!-- AngularFire -->
   <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Application files -->
   <script src="/scripts/app.js"></script>

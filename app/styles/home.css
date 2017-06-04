@@ -1,0 +1,39 @@
+div#newTaskDiv {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+  .menu-open div#newTaskDiv {
+    width: 70%;
+  }
+
+input {
+  height: 60px;
+  width: 80%;
+  border: none;
+  border-top: 1px solid #eee;
+  padding-left: 20px;
+}
+  input:focus {
+    outline: none;
+  }
+
+button#newTaskButton {
+  height: 60px;
+  color: #fff;
+  background-color: #862dce;
+  border: none;
+  width: 20%;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+  button#newTaskButton:hover {
+    background-color: #721db7;
+  }
+
+  button#newTaskButton:focus {
+    outline: none;
+  }

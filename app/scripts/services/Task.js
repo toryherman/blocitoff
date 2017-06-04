@@ -60,17 +60,13 @@
     };
 
     Task.getAge = function(id) {
-      console.log('in Task');
       var index = getIndex(id),
           now = Date.now(),
           then = tasks[index].created_at,
-          ageRange = 604800000, // seven days
+          ageRange = 86400000, //604800000, // seven days
           currentAge = now - then;
 
-      console.log(currentAge);
-
       if (currentAge > ageRange) {
-        console.log(true);
         return true;
       } else {
         return false;

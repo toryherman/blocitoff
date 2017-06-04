@@ -1,14 +1,16 @@
-<ul>
-  <li ng-repeat="task in home.tasks | orderBy : 'rank'" ng-hide="home.getAge(this)">
-    <i class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></i>
-    <i class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></i>
-    {{ task.content }}
-    <i class="icon ion-close" ng-click="home.deleteTask(this)"></i>
-  </li>
-</ul>
+<div class="main-content">
+  <ul>
+    <li ng-repeat="task in home.tasks | orderBy : 'rank'" ng-hide="home.getAge(this)">
+      <span class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></span>
+      <span class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></span>
+      <span class="list-text">{{ task.content }}</span>
+      <span class="icon ion-close" ng-click="home.deleteTask(this)"></span>
+    </li>
+  </ul>
 
-<div id="newTaskDiv">
-  <!-- closing tag on second line to remove extra space between inline blocks -->
-  <input type="text" ng-model="newTask" autofocus="true" ng-keypress="home.createNewTask($event)"
-  /><button id="newTaskButton" ng-click="home.createNewTask()">Add</button>
+  <div id="newTaskDiv">
+    <!-- closing tag on second line to remove extra space between inline blocks -->
+    <input type="text" ng-model="newTask" autofocus="true" ng-keypress="home.createNewTask($event)"
+    /><button id="newTaskButton" ng-click="home.createNewTask()">Add</button>
+  </div>
 </div>
