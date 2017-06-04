@@ -1,14 +1,14 @@
 <ul>
-  <li ng-repeat="task in home.tasks | orderBy : 'rank'">
-    <i class="icon ion-chevron-up" ng-click="moveUpTask(this)"></i>
-    <i class="icon ion-chevron-down" ng-click="moveDownTask(this)"></i>
+  <li ng-repeat="task in home.tasks | orderBy : 'rank'" ng-hide="home.getAge(this)">
+    <i class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></i>
+    <i class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></i>
     {{ task.content }}
-    <i class="icon ion-close" ng-click="deleteTask(this)"></i>
+    <i class="icon ion-close" ng-click="home.deleteTask(this)"></i>
   </li>
 </ul>
 
 <div id="newTaskDiv">
   <!-- closing tag on second line to remove extra space between inline blocks -->
-  <input type="text" ng-model="newTask" autofocus="true" ng-keypress="createNewTask($event)"
-  /><button id="newTaskButton" ng-click="createNewTask()">Add</button>
+  <input type="text" ng-model="newTask" autofocus="true" ng-keypress="home.createNewTask($event)"
+  /><button id="newTaskButton" ng-click="home.createNewTask()">Add</button>
 </div>

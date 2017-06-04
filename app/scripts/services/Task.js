@@ -35,28 +35,47 @@
     Task.addTask = function(item) {
       tasks.$add({
         'content': item,
-        'rank': tasks.length
+        'rank': tasks.length,
+        'created_at': firebase.database.ServerValue.TIMESTAMP
       });
     };
 
     Task.deleteTask = function(id) {
       var index = getIndex(id);
       tasks.$remove(index);
-    }
+    };
 
     Task.minusIndex = function(id) {
       var index = getIndex(id);
       tasks[index].rank--;
       tasks.$save(index);
       moveOtherElement(index, 'up');
-    }
+    };
 
     Task.plusIndex = function(id) {
       var index = getIndex(id);
       tasks[index].rank++;
       tasks.$save(index);
       moveOtherElement(index, 'down');
-    }
+    };
+
+    Task.getAge = function(id) {
+      console.log('in Task');
+      var index = getIndex(id),
+          now = Date.now(),
+          then = tasks[index].created_at,
+          ageRange = 604800000, // seven days
+          currentAge = now - then;
+
+      console.log(currentAge);
+
+      if (currentAge > ageRange) {
+        console.log(true);
+        return true;
+      } else {
+        return false;
+      }
+    };
 
     return Task;
   }
