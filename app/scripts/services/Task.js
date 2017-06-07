@@ -14,18 +14,6 @@
       }
     };
 
-    var moveOtherElement = function(index, direction) {
-      var myRank = tasks[index].rank;
-      var myContent = tasks[index].content;
-      for (var i = 0; i < tasks.length; i++) {
-        if ((tasks[i].rank == myRank) && (tasks[i].content != myContent)) {
-          direction == 'up' ? tasks[i].rank++ : tasks[i].rank--;
-          tasks.$save(i);
-          break;
-        }
-      }
-    };
-
 
     // global functions
     Task.getTasks = function() {
@@ -35,7 +23,7 @@
     Task.addTask = function(item) {
       tasks.$add({
         'content': item,
-        'rank': tasks.length,
+        'rank': (tasks.length + 1) * 10000,
         'created_at': firebase.database.ServerValue.TIMESTAMP
       });
     };
@@ -45,32 +33,24 @@
       tasks.$remove(index);
     };
 
-    Task.minusIndex = function(id) {
+    Task.minusIndex = function(id, rank1, rank2) {
       var index = getIndex(id);
-      tasks[index].rank--;
-      tasks.$save(index);
-      moveOtherElement(index, 'up');
-    };
-
-    Task.plusIndex = function(id) {
-      var index = getIndex(id);
-      tasks[index].rank++;
-      tasks.$save(index);
-      moveOtherElement(index, 'down');
-    };
-
-    Task.getAge = function(id) {
-      var index = getIndex(id),
-          now = Date.now(),
-          then = tasks[index].created_at,
-          ageRange = 86400000, //604800000, // seven days
-          currentAge = now - then;
-
-      if (currentAge > ageRange) {
-        return true;
+      if (rank2) {
+        tasks[index].rank = (rank1 + rank2) / 2;
       } else {
-        return false;
+        tasks[index].rank = rank1 - 5000;
       }
+      tasks.$save(index);
+    };
+
+    Task.plusIndex = function(id, rank1, rank2) {
+      var index = getIndex(id);
+      if (rank2) {
+        tasks[index].rank = (rank1 + rank2) / 2;
+      } else {
+        tasks[index].rank = rank1 + 5000;
+      }
+      tasks.$save(index);
     };
 
     return Task;

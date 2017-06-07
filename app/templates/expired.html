@@ -1,9 +1,0 @@
-<div class="main-content">
-  <h2>Expired tasks</h2>
-  <ul>
-    <li ng-repeat="task in home.tasks | orderBy : 'created_at'" ng-show="home.getAge(this)">
-      <span class="icon ion-chevron-right"></span>
-      <span class="list-text">{{ task.content }}</span>
-    </li>
-  </ul>
-</div>

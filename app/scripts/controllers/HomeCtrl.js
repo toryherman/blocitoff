@@ -14,21 +14,34 @@
     };
 
     this.moveUpTask = function(element) {
-      if (!element.$first) {
-        Task.minusIndex(element.task.$id);
+      var index = element.$index;
+      var id = element.task.$id;
+
+      if (index == 0) {
+        return;
+      } else if (index > 1){
+        var rank2 = $scope.filteredTasks[index - 2].rank;
       }
+
+      var rank1 = $scope.filteredTasks[index - 1].rank;
+
+      Task.minusIndex(id, rank1, rank2 = rank2 || null);
     };
 
     this.moveDownTask = function(element) {
-      if (!element.$last) {
-        Task.plusIndex(element.task.$id);
-      }
-    };
+      var index = element.$index;
+      var id = element.task.$id;
 
-    this.getAge = function(element) {
-      // only shows tasks younger than specified age in Task.js
-      return Task.getAge(element.task.$id);
-    }
+      if (element.$last) {
+        return;
+      } else if (index < $scope.filteredTasks.length - 2) {
+        var rank2 = $scope.filteredTasks[index + 2].rank;
+      }
+
+      var rank1 = $scope.filteredTasks[index + 1].rank;
+
+      Task.plusIndex(id, rank1, rank2 = rank2 || null);
+    };
   }
 
   angular

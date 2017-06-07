@@ -1,9 +1,9 @@
 <div class="main-content">
   <ul>
-    <li ng-repeat="task in home.tasks | orderBy : 'rank'" ng-hide="home.getAge(this)">
+    <li class="tasks" ng-repeat="task in (filteredTasks = (home.tasks | orderBy : 'rank'))">
       <span class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></span>
       <span class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></span>
-      <span class="list-text">{{ task.content }}</span>
+      <span class="list-text">{{ task.content }}</span> {{ task.rank }}
       <span class="icon ion-close" ng-click="home.deleteTask(this)"></span>
     </li>
   </ul>
