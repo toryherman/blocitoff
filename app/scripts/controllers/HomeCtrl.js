@@ -1,5 +1,6 @@
 (function() {
   function HomeCtrl($scope, Task) {
+    var home = this;
     this.tasks = Task.getTasks();
 
     this.createNewTask = function(event) {
@@ -29,6 +30,7 @@
     };
 
     this.moveDownTask = function(element) {
+      console.log(element);
       var index = element.$index;
       var id = element.task.$id;
 
@@ -42,6 +44,25 @@
 
       Task.plusIndex(id, rank1, rank2 = rank2 || null);
     };
+
+    this.dragTask = function(element) {
+      // var index = element.$index;
+      // var id = element.task.$id;
+
+      console.log(element);
+    };
+
+    // sortable
+    $(function() {
+      $('#sortable').sortable({
+        containment: 'parent',
+        update: function(event, ui) {
+          // home.dragTask(ui.item);
+          console.log(ui.item);
+        }
+      });
+      $('#sortable').disableSelection();
+    });
   }
 
   angular

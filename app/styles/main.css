@@ -55,6 +55,7 @@ li {
   padding: 0 20px 0 52.5px;
   border-bottom: 1px solid #eee;
   position: relative;
+	background-color: #fff;
 }
 
 div.page-container {
@@ -76,8 +77,9 @@ div.page-container.menu-open .main-content {
 }
 
 	.menu li {
-		border-bottom: none;
+		border: none;
 		padding-left: 20px;
+		background: none;
 	}
 
 div.page-container.menu-open .menu {

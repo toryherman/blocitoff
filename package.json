@@ -13,8 +13,10 @@
   "author": "Bloc Inc",
   "license": "ISC",
   "dependencies": {
+    "angular-ui-sortable": "^0.17.1",
     "hapi": "~7.5.0",
-    "path": "^0.4.9"
+    "path": "^0.4.9",
+    "sortablejs": "^1.6.0"
   },
   "devDependencies": {
     "connect-modrewrite": "^0.7.9",

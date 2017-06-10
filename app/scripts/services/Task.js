@@ -53,6 +53,10 @@
       tasks.$save(index);
     };
 
+    Task.updateIndex = function(id, rank1, rank2) {
+      
+    };
+
     return Task;
   }
 

@@ -1,5 +1,5 @@
 <div class="main-content">
-  <ul>
+  <ul id="sortable">
     <li class="tasks" ng-repeat="task in (filteredTasks = (home.tasks | orderBy : 'rank'))">
       <span class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></span>
       <span class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></span>
