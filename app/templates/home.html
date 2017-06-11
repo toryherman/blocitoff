@@ -1,9 +1,8 @@
 <div class="main-content">
-  <ul id="sortable">
-    <li class="tasks" ng-repeat="task in (filteredTasks = (home.tasks | orderBy : 'rank'))">
-      <span class="icon ion-chevron-up" ng-click="home.moveUpTask(this)"></span>
-      <span class="icon ion-chevron-down" ng-click="home.moveDownTask(this)"></span>
-      <span class="list-text" ng-mouseup="home.updateTask(this)">{{ task.content }} {{ task.rank }}</span>
+  <ul id="sortable" ui-sortable="home.sortableOptions" ng-model="home.tasks">
+    <li class="tasks" ng-repeat="task in home.tasks">
+      <span class="icon ion-navicon-round handle"></span>
+      <span class="list-text">{{ task.content }} {{ task.rank }}</span>
       <span class="icon ion-close" ng-click="home.deleteTask(this)"></span>
     </li>
   </ul>

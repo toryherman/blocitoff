@@ -63,8 +63,8 @@ li {
 }
 
 	li.tasks {
-		cursor: pointer;
 		display: block;
+		cursor: pointer;
 	}
 
 div.page-container {

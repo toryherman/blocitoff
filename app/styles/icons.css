@@ -1,6 +1,7 @@
 li span.icon {
   color: #ccc;
   z-index: 1000;
+  cursor: pointer;
 }
 
   li span.icon.ion-close {
@@ -12,27 +13,11 @@ li span.icon {
       color: #ad2245;
     }
 
-  li span.icon.ion-chevron-up, li span.icon.ion-chevron-down, li span.icon.ion-chevron-right {
+  li span.icon.ion-navicon-round {
     position: absolute;
     left: 20px;
-    line-height: 30px;
+    line-height: 60px;
   }
-
-    li span.icon.ion-chevron-up {
-      top: 4px;
-    }
-
-    li span.icon.ion-chevron-down {
-      bottom: 4px;
-    }
-
-		li span.icon.ion-chevron-right {
-			top: 14.5px;
-		}
-
-    li span.icon.ion-chevron-up:hover, li span.icon.ion-chevron-down:hover {
-      color: #4a89ef;
-    }
 
   h1 span.icon {
     float: left;

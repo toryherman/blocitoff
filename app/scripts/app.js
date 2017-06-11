@@ -12,14 +12,9 @@
         controller: 'HomeCtrl as home',
         templateUrl: '/templates/home.html'
       })
-      .state('expired', {
-        url: '/expired',
-        controller: 'HomeCtrl as home',
-        templateUrl: '/templates/expired.html'
-      });
   }
 
   angular
-    .module('blocitoff', ['ui.router', 'firebase'])
+    .module('blocitoff', ['ui.router', 'ui.sortable', 'firebase'])
     .config(config);
 })();
