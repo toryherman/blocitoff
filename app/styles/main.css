@@ -49,14 +49,23 @@ ul {
   list-style-type: none;
 }
 
+	ul#sortable:active {
+		background-color: #aaa;
+	}
+
 li {
   min-height: 60px;
   line-height: 60px;
-  padding: 0 20px 0 52.5px;
+  padding: 0 52.5px;
   border-bottom: 1px solid #eee;
   position: relative;
 	background-color: #fff;
 }
+
+	li.tasks {
+		cursor: pointer;
+		display: block;
+	}
 
 div.page-container {
 	height: calc(100% - 60px);
@@ -84,4 +93,9 @@ div.page-container.menu-open .main-content {
 
 div.page-container.menu-open .menu {
 	display: block;
+}
+
+span.list-text {
+	display: inline-block;
+	width: 95%;
 }

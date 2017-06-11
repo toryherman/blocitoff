@@ -53,8 +53,18 @@
       tasks.$save(index);
     };
 
-    Task.updateIndex = function(id, rank1, rank2) {
-      
+    Task.updateIndex = function(id, rankBefore, rankAfter) {
+      var index = getIndex(id);
+
+      if (rankBefore && rankAfter) {
+        tasks[index].rank = (rankBefore + rankAfter) / 2;
+      } else if (rankBefore) {
+        tasks[index].rank = rankBefore + 5000;
+      } else if (rankAfter) {
+        tasks[index].rank = rankAfter - 5000;
+      }
+
+      tasks.$save(index);
     };
 
     return Task;

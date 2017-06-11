@@ -1,9 +1,11 @@
 li span.icon {
   color: #ccc;
+  z-index: 1000;
 }
 
   li span.icon.ion-close {
-    float: right;
+    position: absolute;
+    right: 20px;
   }
 
     li span.icon.ion-close:hover {

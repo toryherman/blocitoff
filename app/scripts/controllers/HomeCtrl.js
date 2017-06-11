@@ -1,6 +1,5 @@
 (function() {
   function HomeCtrl($scope, Task) {
-    var home = this;
     this.tasks = Task.getTasks();
 
     this.createNewTask = function(event) {
@@ -30,7 +29,6 @@
     };
 
     this.moveDownTask = function(element) {
-      console.log(element);
       var index = element.$index;
       var id = element.task.$id;
 
@@ -45,11 +43,19 @@
       Task.plusIndex(id, rank1, rank2 = rank2 || null);
     };
 
-    this.dragTask = function(element) {
-      // var index = element.$index;
-      // var id = element.task.$id;
+    this.updateTask = function(element) {
+      var index = element.$index;
+      var id = element.task.$id;
 
-      console.log(element);
+      if ($scope.filteredTasks[index - 1]) {
+        var rankBefore = $scope.filteredTasks[index - 1].rank;
+      }
+
+      if ($scope.filteredTasks[index + 1]) {
+        var rankAfter = $scope.filteredTasks[index + 1].rank;
+      }
+
+      Task.updateIndex(id, rankBefore = rankBefore || null, rankAfter = rankAfter || null);
     };
 
     // sortable
@@ -57,8 +63,7 @@
       $('#sortable').sortable({
         containment: 'parent',
         update: function(event, ui) {
-          // home.dragTask(ui.item);
-          console.log(ui.item);
+          console.log(ui.item.index());
         }
       });
       $('#sortable').disableSelection();
