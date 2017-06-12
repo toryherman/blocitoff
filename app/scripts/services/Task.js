@@ -3,6 +3,7 @@
     var Task = {};
     var ref = firebase.database().ref().child('tasks').orderByChild('rank');
     var tasks = $firebaseArray(ref);
+    var max = 0;
 
     // local functions
     var getIndex = function(id) {
@@ -13,6 +14,13 @@
       }
     };
 
+    var getMax = function() {
+      for (var i = 0; i < tasks.length; i++) {
+        if (tasks[i].rank > max) {
+          max = tasks[i].rank;
+        }
+      }
+    };
 
     // global functions
     Task.getTasks = function(groupId) {
@@ -20,9 +28,12 @@
     };
 
     Task.addTask = function(item, groupId) {
+      getMax();
+      max += 10000;
+
       tasks.$add({
         'content': item,
-        'rank': (tasks.length + 1) * 10000,
+        'rank': max,
         'created_at': firebase.database.ServerValue.TIMESTAMP,
         'groupId': groupId
       });

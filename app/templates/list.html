@@ -1,6 +1,6 @@
 <ng-include src="'/templates/header.html'"></ng-include>
 
-<div class="main-content">
+<div class="main-content" onclick="$('.page-container').removeClass('menu-open')">
   <div ng-show="list.groupName">
     <h2>{{ list.groupName }}</h2>
   </div>

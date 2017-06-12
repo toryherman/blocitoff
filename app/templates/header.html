@@ -9,7 +9,7 @@
 <nav class="menu">
   <ul>
     <li style="text-transform: uppercase; font-weight: bold;">My Lists</li>
-    <li ng-repeat="group in list.groups" ng-click="list.setGroupId(this)">{{ group.name }}</li>
+    <li ng-repeat="group in list.groups" ng-click="list.setGroupId(this)" onclick="$('.page-container').toggleClass('menu-open')">{{ group.name }}</li>
     <span class="icon ion-plus-circled" ng-click="list.createNewGroup()"></span>
   </ul>
 </nav>
