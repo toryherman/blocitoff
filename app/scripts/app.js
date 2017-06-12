@@ -12,6 +12,11 @@
         controller: 'HomeCtrl as home',
         templateUrl: '/templates/home.html'
       })
+      .state('list', {
+        url: '/list',
+        controller: 'ListCtrl as list',
+        templateUrl: '/templates/list.html'
+      })
   }
 
   angular

@@ -7,25 +7,12 @@
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:600|Open+Sans:400,600" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/home.css">
+  <link rel="stylesheet" href="/styles/list.css">
   <link rel="stylesheet" href="/styles/icons.css">
 </head>
 <body>
-  <header>
-    <h1>
-      <a href="/">Blocitoff</a>
-      <span class="icon ion-navicon" onclick="$('.page-container').toggleClass('menu-open')"></span>
-    </h1>
-  </header>
-
   <div class="page-container">
-    <nav class="menu">
-      <ul>
-        <!-- <li><a href="/expired">Expired tasks</a></li> -->
-      </ul>
-    </nav>
-
-    <ui-view onclick="$('.page-container').removeClass('menu-open')"></ui-view>
+    <ui-view></ui-view>
   </div>
 
   <!-- jQuery -->
@@ -33,6 +20,9 @@
 
   <!-- jQueryUI -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <!-- jQuery Touch Punch -->
+  <script src="/scripts/jquery.ui.touch-punch.min.js"></script>
 
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
@@ -61,7 +51,10 @@
   <!-- Application files -->
   <script src="/scripts/app.js"></script>
   <script src="/scripts/controllers/HomeCtrl.js"></script>
+  <script src="/scripts/controllers/ListCtrl.js"></script>
   <script src="/scripts/services/Task.js"></script>
+  <script src="/scripts/services/Group.js"></script>
   <script src="/scripts/directives/sortable.js"></script>
+  <script src="/scripts/filters/byGroup.js"></script>
 </body>
 </html>

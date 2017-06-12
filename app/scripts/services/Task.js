@@ -1,7 +1,6 @@
 (function() {
-  function Task($firebaseArray) {
+  function Task($firebaseArray, byGroupFilter) {
     var Task = {};
-
     var ref = firebase.database().ref().child('tasks').orderByChild('rank');
     var tasks = $firebaseArray(ref);
 
@@ -16,15 +15,16 @@
 
 
     // global functions
-    Task.getTasks = function() {
-      return tasks;
+    Task.getTasks = function(groupId) {
+      return filteredTasks = byGroupFilter(tasks, groupId);
     };
 
-    Task.addTask = function(item) {
+    Task.addTask = function(item, groupId) {
       tasks.$add({
         'content': item,
         'rank': (tasks.length + 1) * 10000,
-        'created_at': firebase.database.ServerValue.TIMESTAMP
+        'created_at': firebase.database.ServerValue.TIMESTAMP,
+        'groupId': groupId
       });
     };
 
@@ -52,5 +52,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Task', ['$firebaseArray', Task]);
+    .factory('Task', ['$firebaseArray', 'byGroupFilter', Task]);
 })();

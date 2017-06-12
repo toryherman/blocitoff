@@ -1,0 +1,21 @@
+<ng-include src="'/templates/header.html'"></ng-include>
+
+<div class="main-content">
+  <div ng-show="list.groupName">
+    <h2>{{ list.groupName }}</h2>
+  </div>
+
+  <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">
+    <li class="tasks" ng-repeat="task in list.tasks">
+      <span class="icon ion-navicon-round handle"></span>
+      <span class="list-text">{{ task.content }}</span>
+      <span class="icon ion-close" ng-click="list.deleteTask(this)"></span>
+    </li>
+  </ul>
+
+  <div id="newTaskDiv">
+    <!-- closing tag on second line to remove extra space between inline blocks -->
+    <input type="text" ng-model="newTask" autofocus="true" ng-keypress="list.createNewTask($event)"
+    /><button id="newTaskButton" ng-click="list.createNewTask()">Add</button>
+  </div>
+</div>

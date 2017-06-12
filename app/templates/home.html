@@ -1,15 +1,3 @@
 <div class="main-content">
-  <ul id="sortable" ui-sortable="home.sortableOptions" ng-model="home.tasks">
-    <li class="tasks" ng-repeat="task in home.tasks">
-      <span class="icon ion-navicon-round handle"></span>
-      <span class="list-text">{{ task.content }} {{ task.rank }}</span>
-      <span class="icon ion-close" ng-click="home.deleteTask(this)"></span>
-    </li>
-  </ul>
-
-  <div id="newTaskDiv">
-    <!-- closing tag on second line to remove extra space between inline blocks -->
-    <input type="text" ng-model="newTask" autofocus="true" ng-keypress="home.createNewTask($event)"
-    /><button id="newTaskButton" ng-click="home.createNewTask()">Add</button>
-  </div>
+  <h2>Welcome</h2>
 </div>

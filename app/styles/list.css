@@ -4,9 +4,9 @@ div#newTaskDiv {
   width: 100%;
 }
 
-  .menu-open div#newTaskDiv {
-    width: 70%;
-  }
+.menu-open div#newTaskDiv {
+  width: 70%;
+}
 
 input {
   height: 60px;
@@ -15,9 +15,10 @@ input {
   border-top: 1px solid #eee;
   padding-left: 20px;
 }
-  input:focus {
-    outline: none;
-  }
+
+input:focus {
+  outline: none;
+}
 
 button#newTaskButton {
   height: 60px;
@@ -30,10 +31,19 @@ button#newTaskButton {
   cursor: pointer;
 }
 
-  button#newTaskButton:hover {
-    background-color: #721db7;
-  }
+button#newTaskButton:hover {
+  background-color: #721db7;
+}
 
-  button#newTaskButton:focus {
-    outline: none;
-  }
+button#newTaskButton:focus {
+  outline: none;
+}
+
+ul#sortable:active {
+	background-color: #aaa;
+}
+
+li.tasks {
+  display: block;
+  cursor: pointer;
+}

@@ -1,29 +1,42 @@
-li span.icon {
+span.icon {
   color: #ccc;
   z-index: 1000;
   cursor: pointer;
 }
 
-  li span.icon.ion-close {
-    position: absolute;
-    right: 20px;
-  }
+li span.icon.ion-close {
+  position: absolute;
+  right: 20px;
+}
 
-    li span.icon.ion-close:hover {
-      color: #ad2245;
-    }
+li span.icon.ion-close:hover {
+  color: #ad2245;
+}
 
-  li span.icon.ion-navicon-round {
-    position: absolute;
-    left: 20px;
-    line-height: 60px;
-  }
+li span.icon.ion-navicon-round {
+  position: absolute;
+  left: 20px;
+  line-height: 60px;
+}
 
-  h1 span.icon {
-    float: left;
-    margin-left: 20px;
-  }
+h1 span.icon:hover {
+  cursor: pointer;
+}
 
-  h1 span.icon:hover {
-    cursor: pointer;
-  }
+h1 span.icon.ion-navicon {
+  float: left;
+  margin-left: 20px;
+}
+
+h1 span.icon.ion-log-in {
+  float: right;
+  margin-right: 20px;
+}
+
+.menu span.icon.ion-plus-circled {
+  font-size: 2.5em;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: #fff;
+}
