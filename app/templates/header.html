@@ -2,14 +2,17 @@
   <h1>
     <a href="/">Blocitoff</a>
     <span class="icon ion-navicon" onclick="$('.page-container').toggleClass('menu-open')"></span>
-    <span class="icon ion-log-in"></span>
+    <span class="icon ion-log-in" onclick="console.log('hello')"</span>
   </h1>
 </header>
 
 <nav class="menu">
   <ul>
     <li style="text-transform: uppercase; font-weight: bold;">My Lists</li>
-    <li ng-repeat="group in list.groups" ng-click="list.setGroupId(this)" onclick="$('.page-container').toggleClass('menu-open')">{{ group.name }}</li>
+    <li ng-repeat="group in list.groups" ng-click="list.setGroupId(this)" onclick="$('.page-container').toggleClass('menu-open')">
+      <span>{{ group.name }}</span>
+      <span class="icon ion-close" ng-click="list.deleteGroup(this)"></span>
+    </li>
     <span class="icon ion-plus-circled" ng-click="list.createNewGroup()"></span>
   </ul>
 </nav>

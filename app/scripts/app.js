@@ -7,13 +7,8 @@
       });
 
     $stateProvider
-      .state('home', {
-        url: '/',
-        controller: 'HomeCtrl as home',
-        templateUrl: '/templates/home.html'
-      })
       .state('list', {
-        url: '/list',
+        url: '/',
         controller: 'ListCtrl as list',
         templateUrl: '/templates/list.html'
       })

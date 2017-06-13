@@ -73,7 +73,7 @@ div.page-container.menu-open .main-content {
 	background-color: #555;
 	color: #fff;
 	float: left;
-	height: 100%;
+	height: calc(100% - 60px);
 	position: relative;
 }
 
@@ -84,6 +84,10 @@ div.page-container.menu-open .main-content {
 	cursor: pointer;
 }
 
+div.page-container {
+	height: 100%;
+}
+
 div.page-container.menu-open .menu {
 	display: block;
 }
@@ -91,4 +95,8 @@ div.page-container.menu-open .menu {
 span.list-text {
 	display: inline-block;
 	width: 95%;
+}
+
+ui-view {
+	height: 100%;
 }

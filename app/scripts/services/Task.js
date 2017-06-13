@@ -1,5 +1,5 @@
 (function() {
-  function Task($firebaseArray, byGroupFilter) {
+  function Task($firebaseArray) {
     var Task = {};
     var ref = firebase.database().ref().child('tasks').orderByChild('rank');
     var tasks = $firebaseArray(ref);
@@ -23,19 +23,20 @@
     };
 
     // global functions
-    Task.getTasks = function(groupId) {
-      return filteredTasks = byGroupFilter(tasks, groupId);
+    Task.getTasks = function() {
+      return tasks;
     };
 
-    Task.addTask = function(item, groupId) {
+    Task.addTask = function(item, groupId, userId) {
       getMax();
       max += 10000;
 
       tasks.$add({
         'content': item,
         'rank': max,
-        'created_at': firebase.database.ServerValue.TIMESTAMP,
-        'groupId': groupId
+        'groupId': groupId,
+        'userId': userId,
+        'comp': max + '~' + userId
       });
     };
 
@@ -56,6 +57,9 @@
       }
 
       tasks.$save(index);
+
+      tasks[index].comp = tasks[index].rank + '~' + tasks[index].groupId + '~' + tasks[index].userId;
+      tasks.$save(index);
     };
 
     return Task;
@@ -63,5 +67,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Task', ['$firebaseArray', 'byGroupFilter', Task]);
+    .factory('Task', ['$firebaseArray', Task]);
 })();
