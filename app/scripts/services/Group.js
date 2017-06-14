@@ -21,7 +21,7 @@
     Group.addGroup = function(item, userId) {
       groups.$add({
         'name': item,
-        'user': userId
+        'userId': userId
       });
     };
 

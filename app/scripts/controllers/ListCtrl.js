@@ -4,7 +4,10 @@
     list.groups = Group.getGroups();
     list.groupId = '';
     list.groupName = '';
-    list.userId = '8675309'
+
+    var auth = firebase.auth();
+    list.authObj = $firebaseAuth(auth);
+    list.userId = list.authObj.$getAuth().uid;
 
     list.tasks = Task.getTasks();
 
@@ -13,15 +16,16 @@
       list.groupName = element.group.name;
     };
 
-    // list.authObj = $firebaseAuth();
-    //
-    // list.login = function() {
-    //   list.authObj.$authWithOAuthPopup('google').then(function(authData) {
-    //     console.log('logged in as:', authData.uid);
-    //   }).catch(function(error) {
-    //     console.error('auth failed:', error);
-    //   });
-    // };
+    list.login = function() {
+      list.authObj.$signInWithPopup('google').then(function(authData) {
+      }).catch(function(error) {
+        console.error('auth failed:', error);
+      });
+    };
+
+    list.logout = function() {
+      list.authObj.$signOut();
+    };
 
     list.sortableOptions = {
       axis: 'y',

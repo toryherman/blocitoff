@@ -48,9 +48,9 @@ ul#sortable {
   overflow: scroll;
 }
 
-ul#sortable:active {
+/*ul#sortable:active {
 	background-color: #aaa;
-}
+}*/
 
 li.tasks {
   display: block;

@@ -2,7 +2,8 @@
   <h1>
     <a href="/">Blocitoff</a>
     <span class="icon ion-navicon" onclick="$('.page-container').toggleClass('menu-open')"></span>
-    <span class="icon ion-log-in" onclick="console.log('hello')"</span>
+    <span class="icon ion-log-in" ng-click="list.login()" ng-hide="list.authObj.$getAuth()"></span>
+    <span class="icon ion-log-out" ng-click="list.logout()" ng-show="list.authObj.$getAuth()"></span>
   </h1>
 </header>
 

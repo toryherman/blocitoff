@@ -28,7 +28,7 @@ h1 span.icon.ion-navicon {
   margin-left: 20px;
 }
 
-h1 span.icon.ion-log-in {
+h1 span.icon.ion-log-in, h1 span.icon.ion-log-out {
   float: right;
   margin-right: 20px;
 }

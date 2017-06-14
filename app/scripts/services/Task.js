@@ -1,7 +1,7 @@
 (function() {
   function Task($firebaseArray) {
     var Task = {};
-    var ref = firebase.database().ref().child('tasks').orderByChild('rank');
+    var ref = firebase.database().ref().child('tasks').orderByChild('userId');
     var tasks = $firebaseArray(ref);
     var max = 0;
 
