@@ -1,7 +1,7 @@
 (function() {
   function Group($firebaseArray, Task) {
     var Group = {};
-    var ref = firebase.database().ref().child('groups');
+    var ref = firebase.database().ref().child('groups').orderByChild('userId');
     var groups = $firebaseArray(ref);
 
     // local functions
@@ -14,6 +14,14 @@
     };
 
     // global functions
+    Group.setGroup = function(groupId, groupName) {
+      Group.currentGroup = {
+        'id': groupId,
+        'name': groupName
+      };
+      console.log(Group.currentGroup.id);
+    };
+
     Group.getGroups = function() {
       return groups;
     };

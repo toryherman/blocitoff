@@ -44,13 +44,13 @@ button#newTaskButton:focus {
 }
 
 ul#sortable {
-  height: calc(100% - 120px);
+  max-height: calc(100% - 120px);
   overflow: scroll;
 }
 
-/*ul#sortable:active {
+ul#sortable:active {
 	background-color: #aaa;
-}*/
+}
 
 li.tasks {
   display: block;

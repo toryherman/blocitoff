@@ -7,6 +7,11 @@
       });
 
     $stateProvider
+      .state('head', {
+        url: '/',
+        controller: 'HeadCtrl as head',
+        templateUrl: '/templates/head.html'
+      })
       .state('list', {
         url: '/',
         controller: 'ListCtrl as list',

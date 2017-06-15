@@ -1,32 +1,6 @@
 (function() {
-  function ListCtrl($scope, $firebaseAuth, Task, Group) {
+  function ListCtrl($scope, Auth, Task, Group) {
     var list = this;
-    list.groups = Group.getGroups();
-    list.groupId = '';
-    list.groupName = '';
-
-    var auth = firebase.auth();
-    list.authObj = $firebaseAuth(auth);
-    list.userId = list.authObj.$getAuth().uid;
-
-    list.tasks = Task.getTasks();
-
-    list.setGroupId = function(element) {
-      list.groupId = element.group.$id;
-      list.groupName = element.group.name;
-    };
-
-    list.login = function() {
-      list.authObj.$signInWithPopup('google').then(function(authData) {
-      }).catch(function(error) {
-        console.error('auth failed:', error);
-      });
-    };
-
-    list.logout = function() {
-      list.authObj.$signOut();
-    };
-
     list.sortableOptions = {
       axis: 'y',
       stop: function(event, ui) {
@@ -37,14 +11,13 @@
       }
     };
 
-    list.createNewGroup = function() {
-      var newGroupName = prompt('New room name:');
-      Group.addGroup(newGroupName, list.userId);
-    };
 
-    list.deleteGroup = function(element) {
-      Group.deleteGroup(element.group.$id);
-    };
+    // Auth
+    list.authObj = Auth.authObj;
+
+
+    // Task
+    list.tasks = Task.getTasks();
 
     list.createNewTask = function(event) {
       // function only executes on enter keypress
@@ -72,9 +45,23 @@
 
       Task.updateIndex(id, rankBefore, rankAfter);
     };
+
+
+    // Group
+    list.groups = Group.getGroups();
+
+    list.$watch(function() {
+        return Group.currentGroup.id;
+      }, function(newValue, oldValue) {
+        if (newValue) {
+          list.currentGroup.id = newValue;
+          console.log(list.currentGroup.id)
+        }
+      }
+    );
   }
 
   angular
     .module('blocitoff')
-    .controller('ListCtrl', ['$scope', '$firebaseAuth', 'Task', 'Group', ListCtrl]);
+    .controller('ListCtrl', ['$scope', 'Auth', 'Task', 'Group', ListCtrl]);
 })();

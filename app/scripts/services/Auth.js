@@ -1,15 +1,18 @@
 (function() {
   function Auth($firebaseAuth) {
-    var ref = firebase;
-    var authObj = $firebaseAuth(ref);
+    var auth = firebase.auth();
+    Auth.authObj = $firebaseAuth(auth);
 
     Auth.login = function() {
-      console.log(ref);
-      ref.authWithOAuthPopup('google').then(function(authData) {
-        console.log('logged in as:', authData.uid);
+      Auth.authObj.$signInWithPopup('google').then(function(authData) {
+        // console.log(authData);
       }).catch(function(error) {
-        console.error('auth failed:', error);
+        // console.log(error);
       });
+    };
+
+    Auth.logout = function() {
+      Auth.authObj.$signOut();
     };
 
     return Auth;
