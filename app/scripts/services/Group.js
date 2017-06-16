@@ -14,12 +14,14 @@
     };
 
     // global functions
+    Group.currentGroup = null;
+
     Group.setGroup = function(groupId, groupName) {
       Group.currentGroup = {
         'id': groupId,
         'name': groupName
       };
-      console.log(Group.currentGroup.id);
+      console.log(Group.currentGroup.id, Group.currentGroup.name);
     };
 
     Group.getGroups = function() {
@@ -30,6 +32,10 @@
       groups.$add({
         'name': item,
         'userId': userId
+      }).then(function() {
+        Group.setGroup(groups[groups.length - 1].$id, groups[groups.length - 1].name);
+      }, function(error) {
+        console.log(error);
       });
     };
 

@@ -1,42 +1,42 @@
 (function() {
   function HeadCtrl($scope, Auth, Group) {
-    var head = this;
+    var self = this;
 
 
     // Auth
-    head.authObj = Auth.authObj;
-    head.authObj.$onAuthStateChanged(function(user) {
+    self.authObj = Auth.authObj;
+    self.authObj.$onAuthStateChanged(function(user) {
       if (user) {
-        head.userId = user.uid;
+        self.userId = user.uid;
       } else {
-        head.userId = '';
+        self.userId = '';
       }
     });
 
-    head.login = function() {
+    self.login = function() {
       Auth.login();
     };
 
-    head.logout = function() {
+    self.logout = function() {
       Auth.logout();
     };
 
 
     // Group
-    head.groups = Group.getGroups();
+    self.groups = Group.getGroups();
 
-    head.setGroup = function(element) {
-      head.groupId = element.group.$id;
-      head.groupName = element.group.name;
-      Group.setGroup(head.groupId, head.groupName);
+    self.setGroup = function(element) {
+      self.groupId = element.group.$id;
+      self.groupName = element.group.name;
+      Group.setGroup(self.groupId, self.groupName);
     };
 
-    head.createNewGroup = function() {
+    self.createNewGroup = function() {
       var newGroupName = prompt('New room name:');
-      Group.addGroup(newGroupName, head.userId);
+      Group.addGroup(newGroupName, self.userId);
     };
 
-    head.deleteGroup = function(element) {
+    self.deleteGroup = function(element) {
       Group.deleteGroup(element.group.$id);
     };
   }

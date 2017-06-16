@@ -1,8 +1,8 @@
 <ng-include src="'/templates/head.html'"></ng-include>
 
 <div class="main-content" ng-show="list.userId" onclick="$('.page-container').removeClass('menu-open')">
-  <div ng-show="list.groupName">
-    <h2>{{ list.groupName }}</h2>
+  <div ng-show="list.currentGroup.name">
+    <h2>{{ list.currentGroup.name }}</h2>
   </div>
 
   <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">

@@ -10,7 +10,7 @@
 <nav class="menu">
   <ul>
     <li style="text-transform: uppercase; font-weight: bold;">My lists</li>
-    <li ng-repeat="group in head.groups" ng-click="head.setGroup(this)" onclick="$('.page-container').toggleClass('menu-open')">
+    <li ng-repeat="group in head.groups" ng-click="head.setGroup(this)">
       <span>{{ group.name }}</span>
       <span class="icon ion-close" ng-click="head.deleteGroup(this)"></span>
     </li>

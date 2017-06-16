@@ -1,46 +1,46 @@
 (function() {
   function ListCtrl($scope, Auth, Task, Group) {
-    var list = this;
-    list.sortableOptions = {
+    var self = this;
+    self.sortableOptions = {
       axis: 'y',
       stop: function(event, ui) {
         var newIndex = ui.item.sortable.dropindex;
-        if ((list.tasks.length > 1) && (newIndex !== undefined)) {
-          list.updateTask(newIndex);
+        if ((self.tasks.length > 1) && (newIndex !== undefined)) {
+          self.updateTask(newIndex);
         }
       }
     };
 
 
     // Auth
-    list.authObj = Auth.authObj;
+    self.authObj = Auth.authObj;
 
 
     // Task
-    list.tasks = Task.getTasks();
+    self.tasks = Task.getTasks();
 
-    list.createNewTask = function(event) {
+    self.createNewTask = function(event) {
       // function only executes on enter keypress
       if (event && event.keyCode !== 13) { return };
-      Task.addTask($scope.newTask, list.groupId, list.userId);
+      Task.addTask($scope.newTask, self.groupId, self.userId);
       $scope.newTask = '';
     };
 
-    list.deleteTask = function(element) {
+    self.deleteTask = function(element) {
       Task.deleteTask(element.task.$id);
     };
 
-    list.updateTask = function(newIndex) {
+    self.updateTask = function(newIndex) {
       var index = newIndex;
-      var task = list.tasks[index];
+      var task = self.tasks[index];
       var id = task.$id;
 
-      if (list.tasks[index - 1]) {
-        var rankBefore = list.tasks[index - 1].rank;
+      if (self.tasks[index - 1]) {
+        var rankBefore = self.tasks[index - 1].rank;
       }
 
-      if (list.tasks[index + 1]) {
-        var rankAfter = list.tasks[index + 1].rank;
+      if (self.tasks[index + 1]) {
+        var rankAfter = self.tasks[index + 1].rank;
       }
 
       Task.updateIndex(id, rankBefore, rankAfter);
@@ -48,16 +48,19 @@
 
 
     // Group
-    list.groups = Group.getGroups();
+    self.groups = Group.getGroups();
 
-    list.$watch(function() {
-        return Group.currentGroup.id;
-      }, function(newValue, oldValue) {
-        if (newValue) {
-          list.currentGroup.id = newValue;
-          console.log(list.currentGroup.id)
+    $scope.$watch(
+      function() {
+        return Group.currentGroup;
+      },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.currentGroup.id = newValue.id;
+          self.currentGroup.name = newValue.name;
+          console.log(self.currentGroup.id);
         }
-      }
+      }, true
     );
   }
 
