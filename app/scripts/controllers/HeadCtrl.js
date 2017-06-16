@@ -7,9 +7,9 @@
     self.authObj = Auth.authObj;
     self.authObj.$onAuthStateChanged(function(user) {
       if (user) {
-        self.userId = user.uid;
+        self.uid = user.uid;
       } else {
-        self.userId = '';
+        self.uid = '';
       }
     });
 
@@ -28,12 +28,12 @@
     self.setGroup = function(element) {
       self.groupId = element.group.$id;
       self.groupName = element.group.name;
-      Group.setGroup(self.groupId, self.groupName);
+      Group.setGroup(self.groupId, self.groupName, element.group.uid);
     };
 
     self.createNewGroup = function() {
       var newGroupName = prompt('New room name:');
-      Group.addGroup(newGroupName, self.userId);
+      Group.addGroup(newGroupName, self.uid);
     };
 
     self.deleteGroup = function(element) {

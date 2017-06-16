@@ -22,7 +22,7 @@
     self.createNewTask = function(event) {
       // function only executes on enter keypress
       if (event && event.keyCode !== 13) { return };
-      Task.addTask($scope.newTask, self.groupId, self.userId);
+      Task.addTask($scope.newTask, self.groupId, self.uid);
       $scope.newTask = '';
     };
 

@@ -1,7 +1,7 @@
 (function() {
-  function Group($firebaseArray, Task) {
+  function Group($firebaseArray, Task, User) {
     var Group = {};
-    var ref = firebase.database().ref().child('groups').orderByChild('userId');
+    var ref = firebase.database().ref().child('groups').orderByChild('uid');
     var groups = $firebaseArray(ref);
 
     // local functions
@@ -16,24 +16,25 @@
     // global functions
     Group.currentGroup = null;
 
-    Group.setGroup = function(groupId, groupName) {
+    Group.setGroup = function(groupId, groupName, uid) {
       Group.currentGroup = {
         'id': groupId,
         'name': groupName
       };
       console.log(Group.currentGroup.id, Group.currentGroup.name);
+      User.setCurrentGroup(groupId, uid);
     };
 
     Group.getGroups = function() {
       return groups;
     };
 
-    Group.addGroup = function(item, userId) {
+    Group.addGroup = function(item, uid) {
       groups.$add({
         'name': item,
-        'userId': userId
+        'uid': uid
       }).then(function() {
-        Group.setGroup(groups[groups.length - 1].$id, groups[groups.length - 1].name);
+        Group.setGroup(groups[groups.length - 1].$id, groups[groups.length - 1].name, uid);
       }, function(error) {
         console.log(error);
       });
@@ -56,5 +57,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Group', ['$firebaseArray', 'Task', Group]);
+    .factory('Group', ['$firebaseArray', 'Task', 'User', Group]);
 })();

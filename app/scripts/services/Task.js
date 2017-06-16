@@ -1,7 +1,7 @@
 (function() {
   function Task($firebaseArray) {
     var Task = {};
-    var ref = firebase.database().ref().child('tasks').orderByChild('userId');
+    var ref = firebase.database().ref().child('tasks').orderByChild('uid');
     var tasks = $firebaseArray(ref);
     var max = 0;
 
@@ -27,7 +27,7 @@
       return tasks;
     };
 
-    Task.addTask = function(item, groupId, userId) {
+    Task.addTask = function(item, groupId, uid) {
       getMax();
       max += 10000;
 
@@ -35,8 +35,7 @@
         'content': item,
         'rank': max,
         'groupId': groupId,
-        'userId': userId,
-        'comp': max + '~' + userId
+        'uid': uid
       });
     };
 
@@ -56,9 +55,6 @@
         tasks[index].rank = rankBefore + 5000;
       }
 
-      tasks.$save(index);
-
-      tasks[index].comp = tasks[index].rank + '~' + tasks[index].groupId + '~' + tasks[index].userId;
       tasks.$save(index);
     };
 

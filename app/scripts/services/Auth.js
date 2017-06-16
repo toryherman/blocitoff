@@ -1,11 +1,15 @@
 (function() {
-  function Auth($firebaseAuth) {
+  function Auth($firebaseAuth, User) {
     var auth = firebase.auth();
+    var users = User.getUsers();
     Auth.authObj = $firebaseAuth(auth);
 
     Auth.login = function() {
       Auth.authObj.$signInWithPopup('google').then(function(authData) {
-        // console.log(authData);
+        for (var i = 0; i < users.length; i++) {
+          if (users[i].$id === authData.user.uid) { return; }
+        }
+        User.createNewUser(authData.user);
       }).catch(function(error) {
         // console.log(error);
       });
@@ -20,5 +24,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Auth', ['$firebaseAuth', Auth]);
+    .factory('Auth', ['$firebaseAuth', 'User', Auth]);
 })();
