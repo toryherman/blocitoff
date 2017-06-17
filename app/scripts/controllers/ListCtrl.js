@@ -17,7 +17,7 @@
     self.createNewTask = function(event) {
       // function only executes on enter keypress
       if (event && event.keyCode !== 13) { return };
-      Task.addTask($scope.newTask, self.currentGroupId, self.uid);
+      Task.addTask($scope.newTask, self.currentGroup.id, self.uid);
       $scope.newTask = '';
     };
 
@@ -43,12 +43,12 @@
 
     // User
     $scope.$watch(
-      function() { return User.currentGroupId; },
+      function() { return User.currentGroup; },
       function(newValue, oldValue) {
         if (newValue !== oldValue) {
-          self.currentGroupId = newValue;
+          self.currentGroup = newValue;
         }
-      }
+      }, true
     );
 
     // Auth

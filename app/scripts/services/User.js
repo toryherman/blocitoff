@@ -20,7 +20,7 @@
     User.setCurrentUser = function(uid) {
       users.$loaded().then(function() {
         var index = getIndex(uid);
-        User.currentGroupId = users[index].currentGroupId;
+        User.currentGroup = users[index].currentGroup;
       });
     };
 
@@ -29,15 +29,21 @@
         'name': user.displayName,
         'email': user.email,
         'uid': user.uid,
-        'currentGroupId': ''
+        'currentGroup': {
+          'id': '',
+          'name': ''
+        }
       });
     };
 
-    User.setCurrentGroup = function(groupId, uid) {
+    User.setCurrentGroup = function(groupId, groupName, uid) {
       var index = getIndex(uid);
-      users[index].currentGroupId = groupId;
+      User.currentGroup = {
+        'id': groupId,
+        'name': groupName
+      };
+      users[index].currentGroup = User.currentGroup;
       users.$save(index);
-      User.currentGroupId = groupId;
     };
 
     return User;

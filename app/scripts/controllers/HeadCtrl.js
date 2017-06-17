@@ -38,16 +38,16 @@
 
     // User
     self.setCurrentGroup = function(element) {
-      User.setCurrentGroup(element.group.$id, element.group.uid);
+      User.setCurrentGroup(element.group.$id, element.group.name, element.group.uid);
     };
 
     $scope.$watch(
-      function() { return User.currentGroupId },
+      function() { return User.currentGroup },
       function(newValue, oldValue) {
         if (newValue !== oldValue) {
-          self.currentGroupId = newValue;
+          self.currentGroup = newValue;
         }
-      }
+      }, true
     );
   }
 
