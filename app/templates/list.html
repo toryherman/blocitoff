@@ -1,12 +1,12 @@
 <ng-include src="'/templates/head.html'"></ng-include>
 
-<div class="main-content" ng-show="list.uid" onclick="$('.page-container').removeClass('menu-open')">
-  <div ng-show="list.currentGroup.name">
-    <h2>{{ list.currentGroup.name }}</h2>
+<div class="main-content" onclick="$('.page-container').removeClass('menu-open')">
+  <div ng-show="list.currentGroupId">
+    <h2>{{ list.currentGroupId }}</h2>
   </div>
 
   <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">
-    <li class="tasks" ng-repeat="task in list.tasks" ng-show="task.groupId === list.currentGroup.id">
+    <li class="tasks" ng-repeat="task in list.tasks">
       <span class="icon ion-navicon-round handle"></span>
       <span class="list-text">{{ task.content }}</span>
       <span class="icon ion-close" ng-click="list.deleteTask(this)"></span>

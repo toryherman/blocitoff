@@ -1,5 +1,5 @@
 (function() {
-  function ListCtrl($scope, Auth, Task, Group) {
+  function ListCtrl($scope, Auth, Group, Task, User) {
     var self = this;
     self.sortableOptions = {
       axis: 'y',
@@ -11,18 +11,13 @@
       }
     };
 
-
-    // Auth
-    self.authObj = Auth.authObj;
-
-
     // Task
     self.tasks = Task.getTasks();
 
     self.createNewTask = function(event) {
       // function only executes on enter keypress
       if (event && event.keyCode !== 13) { return };
-      Task.addTask($scope.newTask, self.groupId, self.uid);
+      Task.addTask($scope.newTask, self.currentGroupId, self.uid);
       $scope.newTask = '';
     };
 
@@ -46,25 +41,28 @@
       Task.updateIndex(id, rankBefore, rankAfter);
     };
 
-
-    // Group
-    self.groups = Group.getGroups();
-
+    // User
     $scope.$watch(
-      function() {
-        return Group.currentGroup;
-      },
+      function() { return User.currentGroupId; },
       function(newValue, oldValue) {
         if (newValue !== oldValue) {
-          self.currentGroup.id = newValue.id;
-          self.currentGroup.name = newValue.name;
-          console.log(self.currentGroup.id);
+          self.currentGroupId = newValue;
         }
-      }, true
+      }
+    );
+
+    // Auth
+    $scope.$watch(
+      function() { return Auth.uid; },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.uid = newValue;
+        }
+      }
     );
   }
 
   angular
     .module('blocitoff')
-    .controller('ListCtrl', ['$scope', 'Auth', 'Task', 'Group', ListCtrl]);
+    .controller('ListCtrl', ['$scope', 'Auth', 'Group', 'Task', 'User', ListCtrl]);
 })();

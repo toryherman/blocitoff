@@ -97,6 +97,14 @@ span.list-text {
 	width: 95%;
 }
 
+span.selected {
+	color: #fff549;
+}
+
 ui-view {
+	height: 100%;
+}
+
+div.head {
 	height: 100%;
 }

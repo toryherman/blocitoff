@@ -14,17 +14,6 @@
     };
 
     // global functions
-    Group.currentGroup = null;
-
-    Group.setGroup = function(groupId, groupName, uid) {
-      Group.currentGroup = {
-        'id': groupId,
-        'name': groupName
-      };
-      console.log(Group.currentGroup.id, Group.currentGroup.name);
-      User.setCurrentGroup(groupId, uid);
-    };
-
     Group.getGroups = function() {
       return groups;
     };

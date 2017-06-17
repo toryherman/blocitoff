@@ -17,6 +17,12 @@
       return users;
     };
 
+    User.setCurrentUser = function(uid) {
+      var index = getIndex(uid);
+      User.currentGroupId = users[index].currentGroupId;
+      console.log('currentGroupId', User.currentGroupId);
+    };
+
     User.createNewUser = function(user) {
       users.$add({
         'name': user.displayName,
@@ -30,6 +36,7 @@
       var index = getIndex(uid);
       users[index].currentGroupId = groupId;
       users.$save(index);
+      User.currentGroupId = groupId;
     };
 
     return User;

@@ -4,10 +4,20 @@
     var users = User.getUsers();
     Auth.authObj = $firebaseAuth(auth);
 
+    Auth.authObj.$onAuthStateChanged(function(user) {
+      if (user) {
+        Auth.uid = user.uid;
+      } else {
+        Auth.uid = '';
+      }
+    });
+
     Auth.login = function() {
       Auth.authObj.$signInWithPopup('google').then(function(authData) {
+        Auth.uid = Auth.authObj.$getAuth().uid;
+        User.setCurrentUser(Auth.uid);
         for (var i = 0; i < users.length; i++) {
-          if (users[i].$id === authData.user.uid) { return; }
+          if (users[i].uid === authData.user.uid) { return; }
         }
         User.createNewUser(authData.user);
       }).catch(function(error) {

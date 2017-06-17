@@ -1,18 +1,8 @@
 (function() {
-  function HeadCtrl($scope, Auth, Group) {
+  function HeadCtrl($scope, Auth, Group, User) {
     var self = this;
 
-
     // Auth
-    self.authObj = Auth.authObj;
-    self.authObj.$onAuthStateChanged(function(user) {
-      if (user) {
-        self.uid = user.uid;
-      } else {
-        self.uid = '';
-      }
-    });
-
     self.login = function() {
       Auth.login();
     };
@@ -21,27 +11,43 @@
       Auth.logout();
     };
 
+    $scope.$watch(
+      function() { return Auth.uid; },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.uid = newValue;
+        }
+      }
+    );
 
     // Group
     self.groups = Group.getGroups();
 
-    self.setGroup = function(element) {
-      self.groupId = element.group.$id;
-      self.groupName = element.group.name;
-      Group.setGroup(self.groupId, self.groupName, element.group.uid);
-    };
-
     self.createNewGroup = function() {
-      var newGroupName = prompt('New room name:');
+      var newGroupName = prompt('New group name:');
       Group.addGroup(newGroupName, self.uid);
     };
 
     self.deleteGroup = function(element) {
       Group.deleteGroup(element.group.$id);
     };
+
+    // User
+    self.setCurrentGroup = function(element) {
+      User.setCurrentGroup(element.group.$id, element.group.uid);
+    };
+
+    $scope.$watch(
+      function() { return User.currentGroupId },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.currentGroupId = newValue;
+        }
+      }
+    );
   }
 
   angular
     .module('blocitoff')
-    .controller('HeadCtrl', ['$scope', 'Auth', 'Group', HeadCtrl]);
+    .controller('HeadCtrl', ['$scope', 'Auth', 'Group', 'User', HeadCtrl]);
 })();
