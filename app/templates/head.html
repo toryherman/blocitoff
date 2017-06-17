@@ -1,21 +1,19 @@
-<div ng-controller="HeadCtrl as head" class="head">
-  <header>
-    <h1>
-      <a href="/">Blocitoff</a>
-      <span class="icon ion-navicon" ng-show="head.uid" onclick="$('.page-container').toggleClass('menu-open')"></span>
-      <span class="icon ion-log-in" ng-click="head.login()" ng-hide="head.uid"></span>
-      <span class="icon ion-log-out" ng-click="head.logout()" ng-show="head.uid"></span>
-    </h1>
-  </header>
+<header ng-controller="HeadCtrl as head" ng-init="head.init()">
+  <h1>
+    <a href="/">Blocitoff</a>
+    <span class="icon ion-navicon" ng-show="head.uid" onclick="$('.page-container').toggleClass('menu-open')"></span>
+    <span class="icon ion-log-in" ng-click="head.login()" ng-hide="head.uid"></span>
+    <span class="icon ion-log-out" ng-click="head.logout()" ng-show="head.uid"></span>
+  </h1>
+</header>
 
-  <nav class="menu">
-    <ul>
-      <li style="text-transform: uppercase; font-weight: bold;">My lists</li>
-      <li ng-repeat="group in head.groups" ng-click="head.setCurrentGroup(this)">
-        <span>{{ group.name }}</span>
-        <span class="icon ion-close" ng-click="head.deleteGroup(this)"></span>
-      </li>
-      <span class="icon ion-plus-circled" ng-click="head.createNewGroup()"></span>
-    </ul>
-  </nav>
-</div>
+<nav ng-controller="HeadCtrl as head" class="menu">
+  <ul>
+    <li style="text-transform: uppercase; font-weight: bold;">My lists</li>
+    <li ng-repeat="group in head.groups" ng-click="head.setCurrentGroup(this)">
+      <span class="group-name">{{ group.name }}</span>
+      <span class="icon ion-close" ng-click="head.deleteGroup(this)"></span>
+    </li>
+    <span class="icon ion-plus-circled" ng-click="head.createNewGroup()"></span>
+  </ul>
+</nav>

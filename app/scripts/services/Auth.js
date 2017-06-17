@@ -4,6 +4,13 @@
     var users = User.getUsers();
     Auth.authObj = $firebaseAuth(auth);
 
+    Auth.init = function() {
+      if (Auth.authObj.$getAuth()) {
+        self.uid = Auth.authObj.$getAuth().uid;
+        User.setCurrentUser(self.uid);
+      }
+    };
+
     Auth.authObj.$onAuthStateChanged(function(user) {
       if (user) {
         Auth.uid = user.uid;

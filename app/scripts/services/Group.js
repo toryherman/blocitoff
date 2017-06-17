@@ -23,7 +23,7 @@
         'name': item,
         'uid': uid
       }).then(function() {
-        Group.setGroup(groups[groups.length - 1].$id, groups[groups.length - 1].name, uid);
+        User.setCurrentGroup(groups[groups.length - 1].$id, uid);
       }, function(error) {
         console.log(error);
       });

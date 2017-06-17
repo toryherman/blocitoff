@@ -18,9 +18,10 @@
     };
 
     User.setCurrentUser = function(uid) {
-      var index = getIndex(uid);
-      User.currentGroupId = users[index].currentGroupId;
-      console.log('currentGroupId', User.currentGroupId);
+      users.$loaded().then(function() {
+        var index = getIndex(uid);
+        User.currentGroupId = users[index].currentGroupId;
+      });
     };
 
     User.createNewUser = function(user) {

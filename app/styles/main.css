@@ -97,7 +97,7 @@ span.list-text {
 	width: 95%;
 }
 
-span.selected {
+nav li.selected span.group-name {
 	color: #fff549;
 }
 

@@ -6,7 +6,7 @@
   </div>
 
   <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">
-    <li class="tasks" ng-repeat="task in list.tasks">
+    <li class="tasks" ng-repeat="task in list.tasks" ng-show="task.groupId === list.currentGroupId">
       <span class="icon ion-navicon-round handle"></span>
       <span class="list-text">{{ task.content }}</span>
       <span class="icon ion-close" ng-click="list.deleteTask(this)"></span>

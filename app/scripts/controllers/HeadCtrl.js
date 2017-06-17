@@ -2,6 +2,10 @@
   function HeadCtrl($scope, Auth, Group, User) {
     var self = this;
 
+    self.init = function() {
+      Auth.init();
+    };
+
     // Auth
     self.login = function() {
       Auth.login();
