@@ -27,7 +27,7 @@ input:focus {
 button#newTaskButton {
   height: 60px;
   color: #fff;
-  background-color: #862dce;
+  background-color: #4885ed;
   border: none;
   width: 20%;
   text-transform: uppercase;
@@ -36,7 +36,7 @@ button#newTaskButton {
 }
 
 button#newTaskButton:hover {
-  background-color: #721db7;
+  background-color: #3975db;
 }
 
 button#newTaskButton:focus {
@@ -49,7 +49,7 @@ ul#sortable {
 }
 
 ul#sortable:active {
-	background-color: #aaa;
+	background-color: #ccc;
 }
 
 li.tasks {

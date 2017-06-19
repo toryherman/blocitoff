@@ -97,8 +97,9 @@ span.list-text {
 	width: 95%;
 }
 
-nav li.selected span.group-name {
-	color: #fff549;
+nav li span.group-name.selected {
+	color: #f4c20d;
+	font-weight: bold;
 }
 
 ui-view {

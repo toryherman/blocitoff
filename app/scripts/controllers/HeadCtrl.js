@@ -24,6 +24,16 @@
       }
     );
 
+    $scope.$watch(
+      function() { return Auth.photoURL; },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.photoURL = newValue;
+        }
+      }
+    );
+
+
     // Group
     self.groups = Group.getGroups();
 

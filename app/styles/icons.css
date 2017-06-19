@@ -10,7 +10,7 @@ li span.icon.ion-close {
 }
 
 li span.icon.ion-close:hover {
-  color: #ad2245;
+  color: #db3236;
 }
 
 li span.icon.ion-navicon-round {
@@ -28,9 +28,17 @@ h1 span.icon.ion-navicon {
   margin-left: 20px;
 }
 
-h1 span.icon.ion-log-in, h1 span.icon.ion-log-out {
+h1 span.icon.ion-log-in, h1 span.icon.ion-log-out, h1 span.icon img.user-icon {
   float: right;
   margin-right: 20px;
+}
+
+h1 span.icon img.user-icon {
+  height: 26px;
+  border-radius: 100%;
+  margin-top: 15px;
+  margin-right: 10px;
+  cursor: default;
 }
 
 .menu span.icon.ion-plus-circled {

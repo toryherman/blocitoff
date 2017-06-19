@@ -8,7 +8,7 @@
   <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">
     <li class="tasks" ng-repeat="task in list.tasks" ng-show="task.groupId === list.currentGroup.id">
       <span class="icon ion-navicon-round handle"></span>
-      <span class="list-text">{{ task.content }}</span>
+      <span class="list-text">{{ task.content }} {{ task.rank }}</span>
       <span class="icon ion-close" ng-click="list.deleteTask(this)"></span>
     </li>
   </ul>

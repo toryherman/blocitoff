@@ -4,24 +4,21 @@
     var users = User.getUsers();
     Auth.authObj = $firebaseAuth(auth);
 
-    Auth.init = function() {
-      if (Auth.authObj.$getAuth()) {
-        self.uid = Auth.authObj.$getAuth().uid;
-        User.setCurrentUser(self.uid);
-      }
-    };
-
     Auth.authObj.$onAuthStateChanged(function(user) {
       if (user) {
         Auth.uid = user.uid;
+        Auth.photoURL = user.photoURL;
+        console.log(Auth.photoURL);
+        User.setCurrentUser(Auth.uid);
       } else {
         Auth.uid = '';
+        Auth.photoURL = '';
       }
     });
 
     Auth.login = function() {
       Auth.authObj.$signInWithPopup('google').then(function(authData) {
-        Auth.uid = Auth.authObj.$getAuth().uid;
+        Auth.uid = authData.user.uid;
         User.setCurrentUser(Auth.uid);
         for (var i = 0; i < users.length; i++) {
           if (users[i].uid === authData.user.uid) { return; }
