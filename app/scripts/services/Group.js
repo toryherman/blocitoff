@@ -1,5 +1,5 @@
 (function() {
-  function Group($firebaseArray, Task, User) {
+  function Group($firebaseArray, Auth, Task, User) {
     var Group = {};
     var ref = firebase.database().ref().child('groups').orderByChild('uid');
     var groups = $firebaseArray(ref);
@@ -46,5 +46,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Group', ['$firebaseArray', 'Task', 'User', Group]);
+    .factory('Group', ['$firebaseArray', 'Auth', 'Task', 'User', Group]);
 })();

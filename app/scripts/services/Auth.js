@@ -8,7 +8,6 @@
       if (user) {
         Auth.uid = user.uid;
         Auth.photoURL = user.photoURL;
-        console.log(Auth.photoURL);
         User.setCurrentUser(Auth.uid);
       } else {
         Auth.uid = '';
@@ -18,8 +17,7 @@
 
     Auth.login = function() {
       Auth.authObj.$signInWithPopup('google').then(function(authData) {
-        Auth.uid = authData.user.uid;
-        User.setCurrentUser(Auth.uid);
+        User.setCurrentUser(authData.user.uid);
         for (var i = 0; i < users.length; i++) {
           if (users[i].uid === authData.user.uid) { return; }
         }

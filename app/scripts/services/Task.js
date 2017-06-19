@@ -1,7 +1,7 @@
 (function() {
-  function Task($firebaseArray) {
+  function Task($firebaseArray, Auth) {
     var Task = {};
-    var ref = firebase.database().ref().child('tasks').orderByChild('uid');
+    var ref = firebase.database().ref().child('tasks').orderByChild('rank');
     var tasks = $firebaseArray(ref);
     var max = 0;
 
@@ -63,5 +63,5 @@
 
   angular
     .module('blocitoff')
-    .factory('Task', ['$firebaseArray', Task]);
+    .factory('Task', ['$firebaseArray', 'Auth', Task]);
 })();

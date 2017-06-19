@@ -4,9 +4,9 @@
     var users = $firebaseArray(ref);
 
     // local functions
-    var getIndex = function(id) {
+    var getIndex = function(uid) {
       for (var i = 0; i < users.length; i++) {
-        if (users[i].uid == id) {
+        if (users[i].uid == uid) {
           return i;
         }
       }
@@ -21,6 +21,7 @@
       users.$loaded().then(function() {
         var index = getIndex(uid);
         User.currentGroup = users[index].currentGroup;
+        User.displayName = users[index].name;
       });
     };
 

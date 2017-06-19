@@ -59,6 +59,15 @@
         }
       }, true
     );
+
+    $scope.$watch(
+      function() { return User.displayName },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.displayName = newValue;
+        }
+      }
+    );
   }
 
   angular

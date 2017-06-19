@@ -11,8 +11,8 @@
 <nav ng-controller="HeadCtrl as head" class="menu">
   <ul>
     <li style="text-transform: uppercase; font-weight: bold;">My lists</li>
-    <li ng-repeat="group in head.groups" ng-click="head.setCurrentGroup(this)">
-      <span ng-class="{ selected: group.$id == head.currentGroup.id }" class="group-name">{{ group.name }}</span>
+    <li ng-repeat="group in head.groups">
+      <span ng-class="{ selected: group.$id == head.currentGroup.id }" class="group-name" ng-click="head.setCurrentGroup(this)">{{ group.name }}</span>
       <span class="icon ion-close" ng-click="head.deleteGroup(this)"></span>
     </li>
     <span class="icon ion-plus-circled" ng-click="head.createNewGroup()"></span>
