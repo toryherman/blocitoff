@@ -19,7 +19,7 @@
       Auth.authObj.$signInWithPopup('google').then(function(authData) {
         User.setCurrentUser(authData.user.uid);
         for (var i = 0; i < users.length; i++) {
-          if (users[i].uid === authData.user.uid) { return; }
+          if (users[i].$id === authData.user.uid) { return; }
         }
         User.createNewUser(authData.user);
       }).catch(function(error) {

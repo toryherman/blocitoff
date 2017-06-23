@@ -1,9 +1,19 @@
 (function() {
   function Task($firebaseArray, Auth) {
     var Task = {};
-    var ref = firebase.database().ref().child('tasks').orderByChild('rank');
-    var tasks = $firebaseArray(ref);
     var max = 0;
+    var ref;
+    var tasks;
+
+    Auth.authObj.$onAuthStateChanged(function(user) {
+      if (user) {
+        ref = firebase.database().ref().child('tasks/' + user.uid).orderByChild('rank');
+        tasks = $firebaseArray(ref);
+      } else {
+        ref = null;
+        tasks = null;
+      }
+    });
 
     // local functions
     var getIndex = function(id) {
@@ -34,8 +44,7 @@
       tasks.$add({
         'content': item,
         'rank': max,
-        'groupId': groupId,
-        'uid': uid
+        'groupId': groupId
       });
     };
 

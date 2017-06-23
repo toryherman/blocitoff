@@ -35,7 +35,14 @@
 
 
     // Group
-    self.groups = Group.getGroups();
+    $scope.$watch(
+      function() { return Group.getGroups(); },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.groups = Group.getGroups();
+        }
+      }, true
+    );
 
     self.createNewGroup = function() {
       var newGroupName = prompt('New group name:');

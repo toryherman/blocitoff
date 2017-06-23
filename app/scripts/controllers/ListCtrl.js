@@ -12,7 +12,14 @@
     };
 
     // Task
-    self.tasks = Task.getTasks();
+    $scope.$watch(
+      function() { return Task.getTasks(); },
+      function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          self.tasks = Task.getTasks();
+        }
+      }, true
+    );
 
     self.createNewTask = function(event) {
       // function only executes on enter keypress

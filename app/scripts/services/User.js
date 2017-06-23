@@ -6,7 +6,7 @@
     // local functions
     var getIndex = function(uid) {
       for (var i = 0; i < users.length; i++) {
-        if (users[i].uid == uid) {
+        if (users[i].$id == uid) {
           return i;
         }
       }
@@ -26,10 +26,9 @@
     };
 
     User.createNewUser = function(user) {
-      users.$add({
+      ref.child(user.uid).set({
         'name': user.displayName,
         'email': user.email,
-        'uid': user.uid,
         'currentGroup': {
           'id': '',
           'name': ''
@@ -37,12 +36,22 @@
       });
     };
 
-    User.setCurrentGroup = function(groupId, groupName, uid) {
+    User.setCurrentGroup = function(groupId, groupName) {
+      var uid = firebase.auth().currentUser.uid;
       var index = getIndex(uid);
-      User.currentGroup = {
-        'id': groupId,
-        'name': groupName
-      };
+
+      if (groupId) {
+        User.currentGroup = {
+          'id': groupId,
+          'name': groupName
+        };
+      } else {
+        User.currentGroup = {
+          'id': '',
+          'name': ''
+        };
+      }
+
       users[index].currentGroup = User.currentGroup;
       users.$save(index);
     };

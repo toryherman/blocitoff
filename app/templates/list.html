@@ -1,7 +1,7 @@
 <ng-include src="'/templates/head.html'"></ng-include>
 
 <div class="main-content" onclick="$('.page-container').removeClass('menu-open')">
-  <div ng-show="list.currentGroup.name">
+  <div ng-show="list.currentGroup.name && list.uid">
     <h2>{{ list.currentGroup.name }}</h2>
   </div>
 
