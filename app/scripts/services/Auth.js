@@ -29,6 +29,7 @@
 
     Auth.logout = function() {
       Auth.authObj.$signOut();
+      User.setCurrentUser();
     };
 
     return Auth;

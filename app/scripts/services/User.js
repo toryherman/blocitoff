@@ -18,11 +18,16 @@
     };
 
     User.setCurrentUser = function(uid) {
-      users.$loaded().then(function() {
-        var index = getIndex(uid);
-        User.currentGroup = users[index].currentGroup;
-        User.displayName = users[index].name;
-      });
+      if (uid) {
+        users.$loaded().then(function() {
+          var index = getIndex(uid);
+          User.currentGroup = users[index].currentGroup;
+          User.displayName = users[index].name;
+        });
+      } else {
+        User.currentGroup = null;
+        User.displayName = null;
+      }
     };
 
     User.createNewUser = function(user) {

@@ -40,6 +40,10 @@ h2 {
   background-color: #aaa;
 }
 
+p {
+	text-align: center;
+}
+
 a {
 	text-decoration: none;
 	color: inherit;

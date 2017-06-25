@@ -1,6 +1,7 @@
 <ng-include src="'/templates/head.html'"></ng-include>
 
-<div class="main-content" onclick="$('.page-container').removeClass('menu-open')">
+<!-- user logged in -->
+<div class="main-content" ng-show="list.uid" onclick="$('.page-container').removeClass('menu-open')">
   <div ng-show="list.currentGroup.name && list.uid">
     <h2>{{ list.currentGroup.name }}</h2>
   </div>
@@ -8,7 +9,7 @@
   <ul id="sortable" ui-sortable="list.sortableOptions" ng-model="list.tasks">
     <li class="tasks" ng-repeat="task in list.tasks" ng-show="task.groupId === list.currentGroup.id">
       <span class="icon ion-navicon-round handle"></span>
-      <span class="list-text">{{ task.content }} {{ task.rank }}</span>
+      <span class="list-text">{{ task.content }}</span>
       <span class="icon ion-close" ng-click="list.deleteTask(this)"></span>
     </li>
   </ul>
@@ -18,4 +19,10 @@
     <input type="text" ng-model="newTask" autofocus="true" ng-keypress="list.createNewTask($event)"
     /><button id="newTaskButton" ng-click="list.createNewTask()">Add</button>
   </div>
+</div>
+
+<!-- user NOT logged in -->
+<div class="main-content" ng-show"!list.uid" onclick="$('.page-container').removeClass('menu-open')">
+  <h1>Welcome to Blocitoff!</h1>
+  <p>Make and organize your lists!</p>
 </div>
